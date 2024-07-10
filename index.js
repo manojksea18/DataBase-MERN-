@@ -1,12 +1,12 @@
 require("dotenv").config();
 const express = require("express");
-const mangoose = require("mangoose");
+const mongoose = require("mongoose");
 const app = express();
 
 const PORT = Number(process.env.PORT) || 8000;
 const indexRouter = require("./routes");
 
-mangoose.connect(process.env.DB_URL).then(() => {
+mongoose.connect(process.env.DB_URL).then(() => {
   console.log("Database is connected");
 });
 app.use(express.json());
