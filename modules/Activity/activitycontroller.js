@@ -1,8 +1,14 @@
+const Model = require("./activitymodel");
+
 //CRUD
 
-const create = (payload) => {};
+const create = async (payload) => {
+  return await Model.create(payload);
+};
 
-const list = () => {};
+const list = async () => {
+  return await Model.find();
+};
 const getById = (id) => {};
 const updateById = (id, payload) => {};
 const removeById = (id) => {};

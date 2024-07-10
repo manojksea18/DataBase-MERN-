@@ -28,8 +28,8 @@ router.patch("/:id", async (req, res, next) => {
 });
 router.post("/", async (req, res, next) => {
   try {
-    const data = await Contoller.Create(req.body);
-    res.json({ data: data, msg: "posting the new data " });
+    const data = await Contoller.create(req.body);
+    res.json({ data, msg: "posting the new data " });
   } catch (e) {
     next(e);
   }
