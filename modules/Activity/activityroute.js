@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const activityRoutes = require("./activitycontroller");
+const Contoller = require("./activitycontroller");
 
 router.get("/", async (req, res, next) => {
   try {
