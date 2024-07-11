@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Controller = require("./activitycontroller");
 
-router.get("/", async (req, res, next) => {
+router.get("/get-all", async (req, res, next) => {
   try {
     const data = await Controller.list();
     res.json({ data, msg: "list all" });

@@ -5,6 +5,15 @@ const Model = require("./activitymodel");
 const list = async () => {
   return await Model.find();
 };
+const getAll = async (payload) => {
+  const { status } = payload;
+  const query = [];
+  if (status) {
+    query.push();
+  }
+  return await Model.find();
+};
+
 const getById = async (id) => {
   return await Model.findOne({ _id: id });
 };
