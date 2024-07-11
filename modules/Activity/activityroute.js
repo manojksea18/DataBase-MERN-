@@ -3,7 +3,7 @@ const Controller = require("./activitycontroller");
 
 router.get("/get-all", async (req, res, next) => {
   try {
-    const data = await Controller.list();
+    const data = await Controller.getAll(req.query);
     res.json({ data, msg: "list all" });
   } catch (e) {
     next(e);

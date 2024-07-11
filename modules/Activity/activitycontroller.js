@@ -9,9 +9,22 @@ const getAll = async (payload) => {
   const { status } = payload;
   const query = [];
   if (status) {
-    query.push();
+    query.push({
+      $match: {
+        iscompleted: status === "pending" ? false : true,
+      },
+    });
   }
-  return await Model.find();
+  query.push({
+    $lookup: {
+      from: "subactivities",
+      localField: "_id",
+      foreignField: "activity",
+      as: "subactivities",
+    },
+  });
+
+  return await Model.aggregate(query);
 };
 
 const getById = async (id) => {
@@ -27,4 +40,4 @@ const updateById = async (id, payload) => {
 const removeById = async (id) => {
   return await Model.deleteOne({ _id: id });
 };
-module.exports = { create, list, getById, updateById, removeById };
+module.exports = { create, getAll, list, getById, updateById, removeById };
