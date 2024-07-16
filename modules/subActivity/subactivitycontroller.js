@@ -14,7 +14,11 @@ const create = async (payload) => {
   if (!activityData) throw new Error("Activity not found");
   return await Model.create(payload);
 };
-const updateById = () => {};
-const removeById = () => {};
+const updateById = async (id, payload) => {
+  return await Model.findOneAndUpdate({ _id: id }, payload, { new: true });
+};
+const removeById = async (id) => {
+  return await Model.deleteOne({ _id: id });
+};
 
 module.exports = { list, getById, create, updateById, removeById };
